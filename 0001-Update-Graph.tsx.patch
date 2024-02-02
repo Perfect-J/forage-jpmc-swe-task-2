@@ -1,0 +1,32 @@
+From 3a3be6a9ecdd9f4dda6e908e44e452058896cdf2 Mon Sep 17 00:00:00 2001
+From: Johnson Fadogba <johnsonayo532@gmail.com>
+Date: Fri, 2 Feb 2024 16:39:44 +0100
+Subject: [PATCH] Update Graph.tsx
+
+---
+ src/Graph.tsx | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/src/Graph.tsx b/src/Graph.tsx
+index 3b2a7da..10904ef 100644
+--- a/src/Graph.tsx
++++ b/src/Graph.tsx
+@@ -49,6 +49,15 @@ class Graph extends Component<IProps, {}> {
+ 
+       // Add more Perspective configurations here.
+       elem.load(this.table);
++      elem.setAttribute('view', 'y_line');
++      elem.setAttribute('column-pivots', '["stock"]');
++      elem.setAttribute('row-pivots', '["timestamp"]');
++      elem.setAttribute('columns', '["top_ask_price"]');
++      elem.setAttribute('aggregates',
++        {"stock":"distinct count",
++        "top_ask_price":"avg",
++        "top_bid_price":"avg",
++        "timestamp":"distinct count"}');
+     }
+   }
+ 
+-- 
+2.25.1
+
